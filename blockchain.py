@@ -3,6 +3,7 @@ import json
 from textwrap import dedent
 from time import time
 from uuid import uuid4
+import requests
 from flask import Flask, jsonify, request
 
 
@@ -156,8 +157,7 @@ def new_transaction():
         return 'Missing values', 400
 
     # Create a new Transaction
-    index = blockchain.new_transaction(
-        values['sender'], values['recipient'], values['amount'])
+    index = blockchain.new_transaction(values['sender'], values['recipient'], values['amount'])
 
     response = {'message': f'Transaction will be added to Block {index}'}
     return jsonify(response), 201
