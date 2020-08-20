@@ -71,7 +71,7 @@ class Blockchain:
             response = requests.get(f'http://{node}/chain') 
 
             if response.status_code == 200:
-                length = response.json()['lemgth']
+                length = response.json()['length']
                 chain = response.json()['chain']
 
                 # Check if the length is longer and the chain is valid
@@ -279,5 +279,11 @@ def consensus():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    from argparse import ArgumentParser
+
+    parser = ArgumentParser()
+    parser.add_argument('-p', '--port', default=5000, type=int, help='port to listen on')
+    args = parser.parse_args()
+    port = args.port
+    app.run(debug=True, host='0.0.0.0', port=port)
     
