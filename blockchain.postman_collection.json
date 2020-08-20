@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "b2472461-09f6-4d64-a5fa-de955e09ab7c",
+		"name": "blockchain",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://0.0.0.0:5000/mine",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:5000/mine",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"mine"
+					]
+				},
+				"description": "Mine request"
+			},
+			"response": []
+		},
+		{
+			"name": "http://0.0.0.0:5000/transactions/new",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sender\": \"d4ee26eee15148ee92c6cd394edd974e\",\n    \"recipient\": \"someone-other-address\",\n    \"amount\":5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/transactions/new",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"transactions",
+						"new"
+					]
+				},
+				"description": "post request for new transaction"
+			},
+			"response": []
+		},
+		{
+			"name": "http://0.0.0.0:5000/chain",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:5000/chain",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"chain"
+					]
+				},
+				"description": "chain of 3 blocks"
+			},
+			"response": []
+		},
+		{
+			"name": "http://0.0.0.0:5000/nodes/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nodes\": [\"http://0.0.0.0:5001\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/nodes/register",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"nodes",
+						"register"
+					]
+				},
+				"description": "adding a new node "
+			},
+			"response": []
+		},
+		{
+			"name": "http://0.0.0.0:5000/mine",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nodes\": [\"http://0.0.0.0:5001\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/mine",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"mine"
+					]
+				},
+				"description": "3 blocks in node 1"
+			},
+			"response": []
+		},
+		{
+			"name": "http://0.0.0.0:5001/mine",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nodes\": [\"http://0.0.0.0:5001\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5001/mine",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5001",
+					"path": [
+						"mine"
+					]
+				},
+				"description": "6 blocks on node 2"
+			},
+			"response": []
+		},
+		{
+			"name": "http://0.0.0.0:5000/nodes/resolve",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nodes\": [\"http://0.0.0.0:5001\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/nodes/resolve",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"nodes",
+						"resolve"
+					]
+				},
+				"description": "With the consensus algorithm blocks on node 1 were replaced by the blocks on node 2"
+			},
+			"response": []
+		},
+		{
+			"name": "http://0.0.0.0:5001/nodes/resolve",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nodes\": [\"http://0.0.0.0:5001\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5001/nodes/resolve",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5001",
+					"path": [
+						"nodes",
+						"resolve"
+					]
+				},
+				"description": "If we run the node/resolve on the second node it shows that this block chain is authoritative"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
